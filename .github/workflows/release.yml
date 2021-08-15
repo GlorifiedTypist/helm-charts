@@ -19,6 +19,18 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
+      - name: Add dependency repositories
+        run: |
+          for x in $(find . -name requirements.yaml)
+          do
+            cd $(dirname $x)
+            i=0
+            for x in $(helm  dep list | grep "ok" | awk '{ print $3 }' | sort  | uniq)
+            do
+              i=$((i+1)); helm repo add repo${i} $x
+            done
+          done
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0
         env:

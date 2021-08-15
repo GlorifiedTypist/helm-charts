@@ -7,6 +7,7 @@ home: http://spinnaker.io/
 sources:
 - https://github.com/spinnaker
 - https://github.com/viglesiasce/images
+- https://charts.bitnami.com/bitnami
 icon: https://pbs.twimg.com/profile_images/669205226994319362/O7OjwPrh_400x400.png
 maintainers:
 - name: viglesiasce
